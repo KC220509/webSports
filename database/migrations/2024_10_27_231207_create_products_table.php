@@ -28,7 +28,7 @@ return new class extends Migration
                     ->references('id')
                     ->on('categorys')
                     ->onDelete('cascade')
-                    ->onUpdate('cascade');;
+                    ->onUpdate('cascade');
         });
     }
 

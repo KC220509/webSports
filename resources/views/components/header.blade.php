@@ -18,13 +18,23 @@
                 <div class="div-nav">
                     <button class="link link-account" type="button">
                         <i class="fa-solid fa-user"></i>
-                        Tài khoản
+                        @if (Auth::check())
+                            {{ Auth::user()->name }}
+                        @else
+                            Tài khoản
+                        @endif
                     </button>
                     <ul class="subnav">
                         <li><a href="#">Thông tin tài khoản</a></li>
                         <li><a href="#">Đơn hàng của tôi</a></li>
                         <li><a href="#">Trung tâm hỗ trợ</a></li>
-                        <li><a href="/login">Đăng nhập</a></li>
+                        <li>
+                            @if (Auth::check())
+                                <a href="{{ route('account.logout') }}">Đăng xuất</a>
+                            @else
+                                <a href="{{ route('account.loginForm') }}">Đăng nhập</a>
+                            @endif
+                        </li>
                     </ul>
                 </div>
                 <a class="nav-cart" href="#" title="Giỏ hàng">
